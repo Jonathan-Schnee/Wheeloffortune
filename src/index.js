@@ -1,11 +1,12 @@
 const sectors = [
-  { color: '#f82', label: 'Stack' },
-  { color: '#0bf', label: '10' },
-  { color: '#fb0', label: '200' },
-  { color: '#0fb', label: '50' },
-  { color: '#b0f', label: '100' },
-  { color: '#f0b', label: '5' },
-  { color: '#bf0', label: '500' }
+  { color: '#f82', label: '1', text:'Urmarme eine Person'},
+  { color: '#0bf', label: '2', text:'Mache einer Person ein Kompliment' },
+  { color: '#fb0', label: '3', text:'Mache einer Person ein Kompliment' },
+  { color: '#0fb', label: '4', text:'Mache einer Person ein Kompliment'  },
+  { color: '#b0f', label: '5', text:'Mache einer Person ein Kompliment'  },
+  { color: '#f0b', label: '6', text:'Mache einer Person ein Kompliment'  },
+  { color: '#bf0', label: '7', text:'Mache einer Person ein Kompliment'  },
+  { color: '#bff', label: '8', text:'Mache einer Person ein Kompliment'  }
 ]
 
 const rand = (m, M) => Math.random() * (M - m) + m
@@ -22,7 +23,7 @@ const friction = 0.991 // 0.995=soft, 0.99=mid, 0.98=hard
 let angVel = 0 // Angular velocity
 let ang = 0 // Angle in radians
 
-const getIndex = () => Math.floor(tot - (ang / TAU) * tot) % tot
+const getIndex = () => Math.floor(tot - ((ang - 1.5707) / TAU) * tot) % tot
 
 function drawSector(sector, i) {
   const ang = arc * i
@@ -39,23 +40,32 @@ function drawSector(sector, i) {
   ctx.rotate(ang + arc / 2)
   ctx.textAlign = 'right'
   ctx.fillStyle = '#fff'
+  ctx.lineWidth=10;
+  ctx.strokeStyle = "black"
   ctx.font = 'bold 30px sans-serif'
+  ctx.strokeText(sector.label, rad-10, 10)
   ctx.fillText(sector.label, rad - 10, 10)
   //
   ctx.restore()
 }
 
 function rotate() {
+  console.log(ang)
+  console.log(getIndex())
   const sector = sectors[getIndex()]
+
   ctx.canvas.style.transform = `rotate(${ang - PI / 2}rad)`
-  spinEl.textContent = !angVel ? 'SPIN' : sector.label
+  spinEl.textContent = !angVel ? 'PRESS' : ""
   spinEl.style.background = sector.color
 }
 
 function frame() {
   if (!angVel) return
   angVel *= friction // Decrement velocity by friction
-  if (angVel < 0.002) angVel = 0 // Bring to stop
+  if (angVel < 0.002){
+    angVel = 0 // Bring to stop
+    alert(sectors[getIndex()].text)
+  } 
   ang += angVel // Update angle
   ang %= TAU // Normalize angle
   rotate()

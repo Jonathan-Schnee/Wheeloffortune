@@ -2,17 +2,24 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  background: #222222;
 }
 
 body {
-  height: 100vh;
-  display: grid;
-  place-items: center;
+  top: 10%;
+  height: 100%;
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
-
 #wheelOfFortune {
   display: inline-block;
   position: relative;
+  justify-content: center;
   overflow: hidden;
 }
 
@@ -21,17 +28,17 @@ body {
 }
 
 #spin {
-  font: 1.5em/0 sans-serif;
+  font: 2.5em/0 sans-serif;
   user-select: none;
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
   position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 30%;
-  height: 30%;
+  top: 55%;
+  left: 55%;
+  width: 20%;
+  height: 20%;
   margin: -15%;
   background: #fff;
   color: #fff;
@@ -39,12 +46,79 @@ body {
   border-radius: 50%;
   transition: 0.8s;
 }
+#arrow {
+  background-color: transparent;
+  position: relative;
+  left: 400px;
+  bottom: 452px;
+  display: block;
+}
+#arimg {
+  background-color: transparent;
+  scale: 50%;
+  z-index: 1;
+}
+h1 {
+  
+  /* Font options */
+ font: 2.5em/0 sans-serif;
+ text-shadow: 2px 2px 4px #000000;
+ font-weight: 900;
+ position: relative;
+ bottom: 2.5em;
+ font-size:5em;
+ 
+  /* Chrome, Safari, Opera */
+ -webkit-animation: rainbow 5s infinite; 
+ 
+ /* Internet Explorer */
+ -ms-animation: rainbow 5s infinite;
+ 
+ /* Standar Syntax */
+ animation: rainbow 5s infinite; 
+}
 
-#spin::after {
-  content: '';
-  position: absolute;
-  top: -17px;
-  border: 10px solid transparent;
-  border-bottom-color: currentColor;
-  border-top: none;
+/* Chrome, Safari, Opera */
+@-webkit-keyframes rainbow{
+ 0%{color: orange;}	
+ 10%{color: purple;}	
+ 20%{color: red;}
+ 30%{color: CadetBlue;}
+ 40%{color: yellow;}
+ 50%{color: coral;}
+ 60%{color: green;}
+ 70%{color: cyan;}
+ 80%{color: DeepPink;}
+ 90%{color: DodgerBlue;}
+ 100%{color: orange;}
+}
+
+/* Internet Explorer */
+@-ms-keyframes rainbow{
+  0%{color: orange;}	
+ 10%{color: purple;}	
+ 20%{color: red;}
+ 30%{color: CadetBlue;}
+ 40%{color: yellow;}
+ 50%{color: coral;}
+ 60%{color: green;}
+ 70%{color: cyan;}
+ 80%{color: DeepPink;}
+ 90%{color: DodgerBlue;}
+ 100%{color: orange;}
+}
+
+/* Standar Syntax */
+@keyframes rainbow{
+   0%{color: orange;}	
+ 10%{color: purple;}	
+ 20%{color: red;}
+ 30%{color: CadetBlue;}
+ 40%{color: yellow;}
+ 50%{color: coral;}
+ 60%{color: green;}
+ 70%{color: cyan;}
+ 80%{color: DeepPink;}
+ 90%{color: DodgerBlue;}
+ 100%{color: orange;}
 }
