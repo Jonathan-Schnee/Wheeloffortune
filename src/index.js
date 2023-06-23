@@ -6,7 +6,6 @@ const sectors = [
   { color: '#b0f', label: '5', text:'Mache einen Fortnite Tanz'  },
   { color: '#f0b', label: '6', text:'Tausche ein Kleidungsstück mit einer Person / Begleitung'  },
   { color: '#bf0', label: '7', text:'Sing den nächsten Song, den du kennst, laut mit'  },
-  { color: '#bff', label: '8', text:'Highfive 10 verschiedene Personen'  },
   { color: '#bff', label: '8', text:'Highfive 10 verschiedene Personen'  }
 
 ]
