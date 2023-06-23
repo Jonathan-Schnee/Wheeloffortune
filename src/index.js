@@ -1,18 +1,20 @@
 const sectors = [
-  { color: '#f82', label: '1', text:'Urmarme eine Person'},
+  { color: '#f82', label: '1', text:'Umarme eine Person'},
   { color: '#0bf', label: '2', text:'Mache einer Person ein Kompliment' },
-  { color: '#fb0', label: '3', text:'Mache einer Person ein Kompliment' },
-  { color: '#0fb', label: '4', text:'Mache einer Person ein Kompliment'  },
-  { color: '#b0f', label: '5', text:'Mache einer Person ein Kompliment'  },
-  { color: '#f0b', label: '6', text:'Mache einer Person ein Kompliment'  },
-  { color: '#bf0', label: '7', text:'Mache einer Person ein Kompliment'  },
-  { color: '#bff', label: '8', text:'Mache einer Person ein Kompliment'  }
+  { color: '#fb0', label: '3', text:'RICKROLL' },
+  { color: '#0fb', label: '4', text:'Mache mit 3 verschiedenen Personen ein SELFIE'  },
+  { color: '#b0f', label: '5', text:'Mache einen Fortnite Tanz'  },
+  { color: '#f0b', label: '6', text:'Tausche ein Kleidungsstück mit einer Person / Begleitung'  },
+  { color: '#bf0', label: '7', text:'Sing den nächsten Song, den du kennst, laut mit'  },
+  { color: '#bff', label: '8', text:'Highfive 10 verschiedene Personen'  }
+
 ]
 
 const rand = (m, M) => Math.random() * (M - m) + m
 const tot = sectors.length
 const spinEl = document.querySelector('#spin')
 const ctx = document.querySelector('#wheel').getContext('2d')
+const ans = document.querySelector('#answer')
 const dia = ctx.canvas.width
 const rad = dia / 2
 const PI = Math.PI
@@ -50,8 +52,6 @@ function drawSector(sector, i) {
 }
 
 function rotate() {
-  console.log(ang)
-  console.log(getIndex())
   const sector = sectors[getIndex()]
 
   ctx.canvas.style.transform = `rotate(${ang - PI / 2}rad)`
@@ -59,12 +59,16 @@ function rotate() {
   spinEl.style.background = sector.color
 }
 
-function frame() {
+async function frame() {
   if (!angVel) return
   angVel *= friction // Decrement velocity by friction
   if (angVel < 0.002){
     angVel = 0 // Bring to stop
-    alert(sectors[getIndex()].text)
+    ans.textContent = sectors[getIndex()].text
+    if(sectors[getIndex()].label == 3){
+      await Sleep(1000);
+      window.location.href = "https://www.youtube.com/watch?v=xvFZjo5PgG0"
+    }
   } 
   ang += angVel // Update angle
   ang %= TAU // Normalize angle
@@ -84,5 +88,8 @@ function init() {
     if (!angVel) angVel = rand(0.25, 0.45)
   })
 }
+function Sleep(milliseconds) {
+  return new Promise(resolve => setTimeout(resolve, milliseconds));
+ }
 
 init()

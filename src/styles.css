@@ -78,6 +78,26 @@ h1 {
  animation: rainbow 5s infinite; 
 }
 
+h2 {
+  
+  /* Font options */
+ font: 2.5em sans-serif;
+ text-shadow: 2px 2px 4px #000000;
+ font-weight: 700;
+text-align: center;
+ bottom: 2.5em;
+ font-size:4em;
+ width: 100%;
+  /* Chrome, Safari, Opera */
+ -webkit-animation: rainbow 5s infinite; 
+ 
+ /* Internet Explorer */
+ -ms-animation: rainbow 5s infinite;
+ 
+ /* Standar Syntax */
+ animation: rainbow 5s infinite; 
+}
+
 /* Chrome, Safari, Opera */
 @-webkit-keyframes rainbow{
  0%{color: orange;}	
