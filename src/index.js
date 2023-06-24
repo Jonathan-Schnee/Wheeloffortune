@@ -1,7 +1,7 @@
 const sectors = [
   { color: '#f82', label: '1', text:'Umarme eine Person'},
   { color: '#0bf', label: '2', text:'Mache einer Person ein Kompliment' },
-  { color: '#fb0', label: '3', text:'RICKROLL' },
+  { color: '#fb0', label: '3', text: 'Küsse wine Person oder respin' },
   { color: '#0fb', label: '4', text:'Mache mit 3 verschiedenen Personen ein SELFIE'  },
   { color: '#b0f', label: '5', text:'Mache einen Fortnite Tanz'  },
   { color: '#f0b', label: '6', text:'Tausche ein Kleidungsstück mit einer Person / Begleitung'  },
@@ -65,10 +65,6 @@ async function frame() {
   if (angVel < 0.002){
     angVel = 0 // Bring to stop
     ans.textContent = sectors[getIndex()].text
-    if(sectors[getIndex()].label == 3){
-      await Sleep(1000);
-      window.location.href = "https://www.youtube.com/watch?v=xvFZjo5PgG0"
-    }
   } 
   ang += angVel // Update angle
   ang %= TAU // Normalize angle
