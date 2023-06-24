@@ -85,7 +85,7 @@ function init() {
   rotate() // Initial rotation
   engine() // Start engine
   spinEl.addEventListener('click', () => {
-    if (!angVel) angVel = rand(0.25, 0.45)
+    if (!angVel) angVel = rand(0.25, 0.75)
   })
 }
 function Sleep(milliseconds) {
